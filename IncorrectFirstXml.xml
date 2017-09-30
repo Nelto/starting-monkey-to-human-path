@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<note>
+   <text>Захватить средиземье</text>
+   <owner name="Sauron" mail="EvilHelper@mail.ru" </owner>
+   <privileges> 
+    <user>name="Melkor" mail="GreatEvil@mail.ru" rights="RW"</user>
+   </privileges>
+   <cdate>01.01.1000</cdate> 
+</note> 
