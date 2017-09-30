@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<note>
+<!DOCTYPE notes SYSTEM "note.dtd">
+<notes>
+   <note>
    <title>Fate of the world </title>
-   <text>Отнести кольцо в Мордор</text>
-   <owner name="Frodo" mail="steelHobbit@gmail.com" </owner>
+   <text>РћС‚РЅРµСЃС‚Рё РєРѕР»СЊС†Рѕ РІ РњРѕСЂРґРѕСЂ</text>
+   <owner name="Frodo" mail="steelHobbit@gmail.com"/>
    <privileges> 
-       <ALL>rights="R"</All>
+       <ALL rights="R"/>
    </privileges>
    <cdate>13-04-3018</cdate> 
-</note> 
+</note>
+</notes>

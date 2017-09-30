@@ -9,7 +9,7 @@ privileges, cdate?)>
 <!ELEMENT ALL EMPTY>
 <!ELEMENT user EMPTY>
 <!ELEMENT cdate (#PCDATA)>
-<!-- cdate format “DD-MM-YYYY” -->
+<!-- cdate format <DD-MM-YYYY> -->
 
 <!ATTLIST owner
           name CDATA #REQUIRED
