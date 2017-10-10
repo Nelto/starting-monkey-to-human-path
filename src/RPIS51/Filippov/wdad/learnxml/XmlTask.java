@@ -16,12 +16,12 @@ import java.io.IOException;
  * Created by Nelto on 01.10.2017.
  */
 public class XmlTask {
-    private File file;
+    private File XMLfile;
     private Document document;
 
     public XmlTask(String filepath) {
         try {
-            file = new File(filepath);
+            XMLfile = new File(filepath);
             DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             document = documentBuilder.parse(file);
         } catch (Exception exp) {
@@ -29,25 +29,12 @@ public class XmlTask {
         }
     }
 
-   /* public String getNoteText(User owner, String title) {
-        NodeList nodeList = document.getElementsByTagName("owner");
-        int noteNumber = 0;
-        for (int i = 0; i < nodeList.getLength(); i++) {
-            NamedNodeMap map = nodeList.item(i).getAttributes();
-            if (map.item(0).getTextContent().equals(owner.getMail()) && map.item(1).getTextContent().equals(owner.getName())) {
-                noteNumber = i;
-            }
-        }
-        nodeList = document.getElementsByTagName("text");
-        return nodeList.item(noteNumber).getTextContent();
-    }*/
-
-    private boolean checkNote(User owner, String title, Node note) {
+    private boolean checkNote(User owner, String title, Node verifNote) {
         try {
-            Element element = (Element) note;
-            if (searchbyTitle(title, element)) {
-                NodeList nodeList = element.getElementsByTagName("owner");
-                NamedNodeMap attrib = nodeList.item(0).getAttributes();
+            Element note = (Element) verifNote;
+            if (titleCheck(title, note)) {
+                NodeList owners = note.getElementsByTagName("owner");
+                NamedNodeMap attrib = owners.item(0).getAttributes();
                 if (attrib.item(0).getTextContent().equals(owner.getMail()) && attrib.item(1).getTextContent().equals(owner.getName()))
                     return true;
             }
@@ -58,12 +45,12 @@ public class XmlTask {
     }
 
     public String getNoteText(User owner, String title) {
-        NodeList nodeList = document.getElementsByTagName("note");
-        for (int i = 0; i < nodeList.getLength(); i++) {
-            if (checkNote(owner, title, nodeList.item(i))) {
-                Element element = (Element) nodeList.item(i);
-                nodeList = element.getElementsByTagName("text");
-                return nodeList.item(0).getTextContent();
+        NodeList notes = document.getElementsByTagName("note");
+        for (int i = 0; i < notes.getLength(); i++) {
+            if (checkNote(owner, title, notes.item(i))) {
+                Element note = (Element) notes.item(i);
+                NodeList texts = note.getElementsByTagName("text");
+                return texts.item(0).getTextContent();
             }
         }
         return null;
@@ -71,20 +58,20 @@ public class XmlTask {
 
 
     public void UpdateNote(User owner, String title, String newText) {
-        NodeList nodeList = document.getElementsByTagName("note");
-        for (int i = 0; i < nodeList.getLength(); i++) {
-            if (checkNote(owner, title, nodeList.item(i))) {
-                Element element = (Element) nodeList.item(i);
-                nodeList = element.getElementsByTagName("text");
-                nodeList.item(0).setTextContent(newText);
+        NodeList notes = document.getElementsByTagName("note");
+        for (int i = 0; i < notes.getLength(); i++) {
+            if (checkNote(owner, title, notes.item(i))) {
+                Element note = (Element) notes.item(i);
+                NodeList texts = note.getElementsByTagName("text");
+                texts.item(0).setTextContent(newText);
                 writeDocument();
             }
         }
     }
 
-    private boolean searchbyTitle(String title, Element element) {
-        NodeList nodeList = element.getElementsByTagName("title");
-        if (nodeList.item(0).getTextContent().equals(title))
+    private boolean titleCheck(String title, Element note) {
+        NodeList titles = element.getElementsByTagName("title");
+        if (titles.item(0).getTextContent().equals(title))
             return true;
         else return false;
     }
@@ -92,14 +79,14 @@ public class XmlTask {
 
     public void setPrivileges(String noteTitle, User user, int newRights) {
         try {
-            NodeList nodeList = document.getElementsByTagName("note");
-            Element element;
-            for (int i = 0; i < nodeList.getLength(); i++) {
-                element = (Element) nodeList.item(i);
-                if (element.getElementsByTagName("title").item(0).getTextContent().equals(noteTitle)) {
-                    element = (Element) element.getElementsByTagName("privileges").item(0);
-                    if (!changeRights(element, user, newRights) && newRights != 0) {
-                        element.appendChild(createUser(user, newRights));
+            NodeList notes = document.getElementsByTagName("note");
+            Element note;
+            for (int i = 0; i < notes.getLength(); i++) {
+                note = (Element) notes.item(i);
+                if (note.getElementsByTagName("title").item(0).getTextContent().equals(noteTitle)) {
+                    note = (Element) note.getElementsByTagName("privileges").item(0);
+                    if (!changeRights(note, user, newRights) && newRights != 0) {
+                        note.appendChild(createUser(user, newRights));
                     }
                 }
             }
@@ -110,11 +97,11 @@ public class XmlTask {
     }
 
     private boolean changeRights(Element privileges, User wantedUser, int newRight) {
-        NodeList nodeList = privileges.getElementsByTagName("user");
+        NodeList users = privileges.getElementsByTagName("user");
         NamedNodeMap attrib;
         Element user;
-        for (int i = 0; i < nodeList.getLength(); i++) {
-            user = (Element) nodeList.item(i);
+        for (int i = 0; i < users.getLength(); i++) {
+            user = (Element) users.item(i);
             attrib = user.getAttributes();
             if (attrib.item(0).getTextContent().equals(wantedUser.getMail()) && attrib.item(1).getTextContent().equals(wantedUser.getName())) {
                 switch (newRight) {
@@ -152,7 +139,7 @@ public class XmlTask {
         try {
             Transformer tr = TransformerFactory.newInstance().newTransformer();
             DOMSource source = new DOMSource(document);
-            FileOutputStream fos = new FileOutputStream(file);
+            FileOutputStream fos = new FileOutputStream(XMLfile);
             StreamResult result = new StreamResult(fos);
             tr.transform(source, result);
             System.out.println("XML успешно изменен");
