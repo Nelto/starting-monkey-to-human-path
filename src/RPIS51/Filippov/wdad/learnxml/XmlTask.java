@@ -23,7 +23,7 @@ public class XmlTask {
         try {
             XMLfile = new File(filepath);
             DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            document = documentBuilder.parse(file);
+            document = documentBuilder.parse(XMLfile);
         } catch (Exception exp) {
             System.out.println(exp.getMessage());
         }
@@ -70,7 +70,7 @@ public class XmlTask {
     }
 
     private boolean titleCheck(String title, Element note) {
-        NodeList titles = element.getElementsByTagName("title");
+        NodeList titles = note.getElementsByTagName("title");
         if (titles.item(0).getTextContent().equals(title))
             return true;
         else return false;
