@@ -2,28 +2,26 @@ package RPIS51.Filippov.wdad.learnxml;
 
 import org.w3c.dom.*;
 
-import javax.xml.crypto.dsig.TransformException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
  * Created by Nelto on 01.10.2017.
  */
 public class XmlTask {
-    private File XMLfile;
+    private File xmlfile;
     private Document document;
 
     public XmlTask(String filepath) {
         try {
-            XMLfile = new File(filepath);
+            xmlfile = new File(filepath);
             DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            document = documentBuilder.parse(XMLfile);
+            document = documentBuilder.parse(xmlfile);
         } catch (Exception exp) {
             System.out.println(exp.getMessage());
         }
@@ -64,7 +62,7 @@ public class XmlTask {
                 Element note = (Element) notes.item(i);
                 NodeList texts = note.getElementsByTagName("text");
                 texts.item(0).setTextContent(newText);
-                writeDocument();
+                updateDocument();
             }
         }
     }
@@ -90,7 +88,7 @@ public class XmlTask {
                     }
                 }
             }
-            writeDocument();
+            updateDocument();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -135,16 +133,16 @@ public class XmlTask {
         return newUser;
     }
 
-    private void writeDocument() throws TransformerFactoryConfigurationError {
+    private void updateDocument() throws TransformerFactoryConfigurationError {
         try {
             Transformer tr = TransformerFactory.newInstance().newTransformer();
             DOMSource source = new DOMSource(document);
-            FileOutputStream fos = new FileOutputStream(XMLfile);
-            StreamResult result = new StreamResult(fos);
+            StreamResult result = new StreamResult(xmlfile);
             tr.transform(source, result);
-            System.out.println("XML успешно изменен");
-        } catch (TransformerException | IOException e) {
-            e.printStackTrace(System.out);
+        } catch (TransformerConfigurationException ex) {
+            System.out.println(ex.getMessage());
+        } catch (TransformerException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 }
