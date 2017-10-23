@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE notes SYSTEM "note.dtd">
+<notes>
+<note>
+   <text>Захватить средиземье</text>
+   <owner name="Sauron" mail="EvilHelper@mail.ru"/>
+   <privileges> 
+    <user name="Melkor" mail="GreatEvil@mail.ru" rights="RW"/>
+   </privileges>
+   <causes> WANT </causes>
+   <cdate>01.01.1000</cdate>
+</note>
+</notes>

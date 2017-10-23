@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><notes>
+   <note>
+   <title>Спасение мира</title>
+   <text>Отнести кольцо в Мордер</text>
+   <owner mail="steelHobbit@gmail.com" name="Frodo"/>
+   <privileges> 
+       <user mail="ReunitedKingdomKing@gmail.com" name="Aragon" rights="RW"/>
+   </privileges>
+   <cdate>13-04-3018</cdate> 
+</note>
+</notes>
