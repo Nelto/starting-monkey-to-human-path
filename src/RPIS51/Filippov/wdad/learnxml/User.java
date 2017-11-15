@@ -8,6 +8,7 @@ import javax.xml.soap.Name;
 public class User {
     private String name;
     private String mail;
+    static final User ALL = new User("ALL", null);
 
     public User(String name, String mail) {
         this.name = name;
