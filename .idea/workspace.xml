@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="92ddd7ab-bee9-4a26-b2ac-e9296ba6328a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RPIS51/Filippov/wdad/learnxml/User.java" afterPath="$PROJECT_DIR$/src/RPIS51/Filippov/wdad/learnxml/User.java" />
-    </list>
+    <list default="true" id="92ddd7ab-bee9-4a26-b2ac-e9296ba6328a" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,7 +24,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RPIS51/Filippov/wdad/learnxml/User.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="442">
@@ -36,12 +34,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PreferencesManager.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PreferencesManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RPIS51/Filippov/wdad/data/managers/PreferencesManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="953">
+            <state relative-caret-position="443">
               <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1594#1595#0" expanded="true" />
+                <element signature="e#1662#1663#0" expanded="true" />
+                <element signature="e#1877#1878#0" expanded="true" />
+                <element signature="e#1946#1947#0" expanded="true" />
+                <element signature="e#2157#2158#0" expanded="true" />
+                <element signature="e#2241#2242#0" expanded="true" />
+                <element signature="e#2460#2461#0" expanded="true" />
+                <element signature="e#2524#2525#0" expanded="true" />
+                <element signature="e#2731#2732#0" expanded="true" />
+                <element signature="e#2800#2801#0" expanded="true" />
+                <element signature="e#3015#3016#0" expanded="true" />
+                <element signature="e#3082#3083#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -52,7 +64,7 @@
             <state relative-caret-position="238">
               <caret line="14" column="76" lean-forward="false" selection-start-line="14" selection-start-column="76" selection-end-line="14" selection-end-column="76" />
               <folding>
-                <marker date="1510757133098" expanded="true" signature="376:495" ph="..." />
+                <marker date="1510757170568" expanded="true" signature="376:495" ph="..." />
               </folding>
             </state>
           </provider>
@@ -64,8 +76,8 @@
             <state relative-caret-position="306">
               <caret line="18" column="38" lean-forward="false" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
               <folding>
-                <marker date="1510757133096" expanded="true" signature="446:475" ph="..." />
-                <marker date="1510757133096" expanded="true" signature="852:923" ph="..." />
+                <marker date="1510757170566" expanded="true" signature="446:475" ph="..." />
+                <marker date="1510757170566" expanded="true" signature="852:923" ph="..." />
               </folding>
             </state>
           </provider>
@@ -760,7 +772,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46050000" />
+    <option name="totallyTimeSpent" value="46078000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="143" y="61" width="1132" height="1026" extended-state="0" />
@@ -1101,7 +1113,7 @@
         <state relative-caret-position="238">
           <caret line="14" column="76" lean-forward="false" selection-start-line="14" selection-start-column="76" selection-end-line="14" selection-end-column="76" />
           <folding>
-            <marker date="1510757133098" expanded="true" signature="376:495" ph="..." />
+            <marker date="1510757170568" expanded="true" signature="376:495" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1135,8 +1147,8 @@
         <state relative-caret-position="306">
           <caret line="18" column="38" lean-forward="false" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
           <folding>
-            <marker date="1510757133096" expanded="true" signature="446:475" ph="..." />
-            <marker date="1510757133096" expanded="true" signature="852:923" ph="..." />
+            <marker date="1510757170566" expanded="true" signature="446:475" ph="..." />
+            <marker date="1510757170566" expanded="true" signature="852:923" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1145,14 +1157,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="64" lean-forward="false" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="64" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RPIS51/Filippov/wdad/data/managers/PreferencesManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="953">
+        <state relative-caret-position="443">
           <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1594#1595#0" expanded="true" />
+            <element signature="e#1662#1663#0" expanded="true" />
+            <element signature="e#1877#1878#0" expanded="true" />
+            <element signature="e#1946#1947#0" expanded="true" />
+            <element signature="e#2157#2158#0" expanded="true" />
+            <element signature="e#2241#2242#0" expanded="true" />
+            <element signature="e#2460#2461#0" expanded="true" />
+            <element signature="e#2524#2525#0" expanded="true" />
+            <element signature="e#2731#2732#0" expanded="true" />
+            <element signature="e#2800#2801#0" expanded="true" />
+            <element signature="e#3015#3016#0" expanded="true" />
+            <element signature="e#3082#3083#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
