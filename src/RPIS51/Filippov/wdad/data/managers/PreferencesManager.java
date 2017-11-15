@@ -44,7 +44,7 @@ public class PreferencesManager {
 
     public void setCreateregistry(String value) {
         getElement("createregistry").setTextContent(value);
-        updateDocument();
+        saveProperty();
     }
 
     public String getRegistryaddress() {
@@ -53,7 +53,7 @@ public class PreferencesManager {
 
     public void setRegistryaddress(String value) {
         getElement("registryaddress").setTextContent(value);
-        updateDocument();
+        saveProperty();
     }
 
     public int getRegistryport() {
@@ -62,7 +62,7 @@ public class PreferencesManager {
 
     public void setRegistryport(int value) {
         getElement("registryport").setTextContent(String.valueOf(value));
-        updateDocument();
+        saveProperty();
     }
 
     public String getPolicypath() {
@@ -71,7 +71,7 @@ public class PreferencesManager {
 
     public void setPolicypath(String value) {
         getElement("policypath").setTextContent(value);
-        updateDocument();
+        saveProperty();
     }
 
     public String getUsecodebaseonly() {
@@ -80,7 +80,7 @@ public class PreferencesManager {
 
     public void setUsecodebaseonly(String value) {
         getElement("usecodebaseonly").setTextContent(value);
-        updateDocument();
+        saveProperty();
     }
 
 
@@ -90,15 +90,19 @@ public class PreferencesManager {
 
     public void setClassprovider(String value) {
         getElement("classprovider").setTextContent(value);
-        updateDocument();
+        saveProperty();
     }
 
-    private void updateDocument() {
+    private void saveProperty() {
         try {
+            DOMSource dom_source = new DOMSource(document);
+            StreamResult out_stream = new StreamResult(appconfig);
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
-            DOMSource source = new DOMSource(document);
-            StreamResult result = new StreamResult(appconfig);
-            transformer.transform(source, result);
+            DocumentType docType = document.getDoctype();
+            String systemID = docType.getSystemId();
+            String res = systemID;
+            transformer.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, res);
+            transformer.transform(dom_source, out_stream);
         } catch (TransformerConfigurationException ex) {
             System.out.println(ex.getMessage());
         } catch (TransformerException ex) {
