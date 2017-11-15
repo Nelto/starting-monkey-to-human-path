@@ -34,6 +34,13 @@ public class PreferencesManager {
         xPath = XPathFactory.newInstance().newXPath();
     }
 
+    public String getName(String name){
+        StringBuilder result = new StringBuilder(getProperty(PreferencesConstantManager.REGISTRYADDRESS))
+                .append("/")
+                .append(getProperty(PreferencesConstantManager.REGISTRYPORT))
+                .append(name);
+        return result.toString();
+    }
     public static PreferencesManager getInstance() throws Exception {
         if (instance == null)
             instance = new PreferencesManager();
@@ -113,7 +120,7 @@ public class PreferencesManager {
 
     public String getProperty(String key) {
         try {
-            XPathExpression xPathExpression = xPath.compile(key + "/text()");
+            XPathExpression xPathExpression = xPath.compile(key.replace(".","/") + "/text()");
             String property = (String) xPathExpression.evaluate(document, XPathConstants.STRING);
             return property;
         } catch (XPathExpressionException e) {
@@ -124,7 +131,7 @@ public class PreferencesManager {
 
     public void setProperty(String key, String value) {
         try {
-            XPathExpression xPathExpression = xPath.compile(key + "/text()");
+            XPathExpression xPathExpression = xPath.compile(key.replace(".","/") + "/text()");
             Node property = (Node) xPathExpression.evaluate(document, XPathConstants.NODE);
             property.setTextContent(value);
         } catch (XPathExpressionException e) {

@@ -1,9 +1,11 @@
 package RPIS51.Filippov.wdad.learn.xml;
 
+import java.io.Serializable;
+
 /**
  * Created by Nelto on 01.10.2017.
  */
-public class User {
+public class User implements Serializable {
     private String name;
     private String mail;
     static final User ALL = new User("ALL", null);
