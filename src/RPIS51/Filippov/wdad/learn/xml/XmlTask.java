@@ -54,7 +54,7 @@ public class XmlTask {
     }
 
 
-    public void UpdateNote(User owner, String title, String newText) {
+    public void updateNote(User owner, String title, String newText) {
         NodeList notes = document.getElementsByTagName("note");
         for (int i = 0; i < notes.getLength(); i++) {
             if (checkNote(owner, title, notes.item(i))) {
