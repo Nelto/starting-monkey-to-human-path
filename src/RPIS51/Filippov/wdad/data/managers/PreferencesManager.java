@@ -13,6 +13,7 @@ import javax.xml.xpath.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -52,7 +53,7 @@ public class PreferencesManager {
     @Deprecated
     public void setCreateregistry(String value) {
         getElement("createregistry").setTextContent(value);
-        updateDocument();
+        saveProperty();
     }
 
     @Deprecated
@@ -63,7 +64,7 @@ public class PreferencesManager {
     @Deprecated
     public void setRegistryaddress(String value) {
         getElement("registryaddress").setTextContent(value);
-        updateDocument();
+        saveProperty();
     }
 
     @Deprecated
@@ -74,7 +75,7 @@ public class PreferencesManager {
     @Deprecated
     public void setRegistryport(int value) {
         getElement("registryport").setTextContent(String.valueOf(value));
-        updateDocument();
+        saveProperty();
     }
 
     @Deprecated
@@ -85,7 +86,7 @@ public class PreferencesManager {
     @Deprecated
     public void setPolicypath(String value) {
         getElement("policypath").setTextContent(value);
-        updateDocument();
+        saveProperty();
     }
 
     @Deprecated
@@ -96,7 +97,7 @@ public class PreferencesManager {
     @Deprecated
     public void setUsecodebaseonly(String value) {
         getElement("usecodebaseonly").setTextContent(value);
-        updateDocument();
+        saveProperty();
     }
 
     @Deprecated
@@ -107,7 +108,7 @@ public class PreferencesManager {
     @Deprecated
     public void setClassprovider(String value) {
         getElement("classprovider").setTextContent(value);
-        updateDocument();
+        saveProperty();
     }
 
     public String getProperty(String key) {
@@ -158,15 +159,8 @@ public class PreferencesManager {
     }
 
     public void setProperties(Properties prop) {
-        String[] keys = {
-                PreferencesConstantManager.CREATEREGISTRY,
-                PreferencesConstantManager.REGISTRYADDRESS,
-                PreferencesConstantManager.REGISTRYPORT,
-                PreferencesConstantManager.POLICYPATH,
-                PreferencesConstantManager.USECODEBASEONLY,
-                PreferencesConstantManager.CLASSPROVIDER};
-        for (String key : keys) {
-            setProperty(key, prop.getProperty(key));
+        for (Map.Entry<Object,Object> proper: prop.entrySet()) {
+            setProperty((String) proper.getKey(),getProperty((String) proper.getValue()));
         }
     }
 
@@ -187,7 +181,7 @@ public class PreferencesManager {
         }
     }
 
-    public void updateDocument() {
+    public void saveProperty() {
         try {
             DOMSource dom_source = new DOMSource(document);
             StreamResult out_stream = new StreamResult(appconfig);
