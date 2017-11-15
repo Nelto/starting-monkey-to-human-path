@@ -1,6 +1,4 @@
-package RPIS51.Filippov.wdad.learnxml;
-
-import javax.xml.soap.Name;
+package RPIS51.Filippov.wdad.learn.xml;
 
 /**
  * Created by Nelto on 01.10.2017.

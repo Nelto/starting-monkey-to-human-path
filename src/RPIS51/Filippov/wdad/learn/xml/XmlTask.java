@@ -1,4 +1,4 @@
-package RPIS51.Filippov.wdad.learnxml;
+package RPIS51.Filippov.wdad.learn.xml;
 
 import org.w3c.dom.*;
 
@@ -8,7 +8,6 @@ import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
-import java.io.IOException;
 
 /**
  * Created by Nelto on 01.10.2017.

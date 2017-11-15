@@ -1,6 +1,4 @@
-package RPIS51.Filippov.wdad.learnxml;
-
-import java.io.File;
+package RPIS51.Filippov.wdad.learn.xml;
 
 /**
  * Created by Nelto on 04.10.2017.
