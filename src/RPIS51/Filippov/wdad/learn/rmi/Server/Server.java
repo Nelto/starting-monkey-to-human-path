@@ -1,7 +1,6 @@
 package RPIS51.Filippov.wdad.learn.rmi.Server;
 
 import RPIS51.Filippov.wdad.data.managers.PreferencesManager;
-import RPIS51.Filippov.wdad.learn.rmi.Client.XmlDateManager;
 import RPIS51.Filippov.wdad.utils.PreferencesConstantManager;
 
 import java.rmi.registry.LocateRegistry;
@@ -15,12 +14,15 @@ public class Server {
             Registry registry = null;
             PreferencesManager manager = PreferencesManager.getInstance();
             int registryport = Integer.parseInt(manager.getProperty(PreferencesConstantManager.REGISTRYPORT));
+
             if (manager.getProperty(PreferencesConstantManager.CREATEREGISTRY).equals("yes")) {
                 registry = LocateRegistry.createRegistry(registryport);
             } else registry = LocateRegistry.getRegistry(registryport);
-            XmlDateManager stub = (XmlDateManager) UnicastRemoteObject.exportObject(obj, 0);
-            registry.bind("Note", stub);
-            manager.addBindedObject(manager.getName("Note"),XmlDateManager.class.getCanonicalName());
+
+            UnicastRemoteObject.exportObject(obj, 0);
+            registry.rebind("Note", obj);
+            //manager.addBindedObject(manager.getName("Note"),XmlDateManager.class.getCanonicalName());
+            //manager.updateDocument();
             System.out.println("Server ready");
         } catch (Exception e) {
             System.out.println(e.getMessage());

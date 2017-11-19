@@ -1,5 +1,8 @@
 package RPIS51.Filippov.wdad.learn.xml;
 
+import org.w3c.dom.NamedNodeMap;
+
+import javax.xml.soap.Node;
 import java.io.Serializable;
 
 /**
@@ -13,6 +16,10 @@ public class User implements Serializable {
     public User(String name, String mail) {
         this.name = name;
         this.mail = mail;
+    }
+
+    public static User getALL() {
+        return ALL;
     }
 
     public String getName() {

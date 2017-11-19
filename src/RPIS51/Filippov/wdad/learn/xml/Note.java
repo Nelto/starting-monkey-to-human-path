@@ -1,16 +1,21 @@
 package RPIS51.Filippov.wdad.learn.xml;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 
-public class Note {
+public class Note implements Serializable {
     private User owner;
     private String title;
     private StringBuilder text;
     private Date cdate;
-    private HashMap<User,Integer> privelegesMap;
+    private HashMap<User, Integer> privelegesMap;
 
-    public User getOwner() {
+    public Note(User owner) {
+        this.owner = owner;
+    }
+
+    public User getOwner(User owner) {
         return owner;
     }
 

@@ -13,7 +13,7 @@ public class PreferTest {
           //  preferencesManager.setProperty("appconfig/rmi/server/registry/createregistry","yes");
             /*preferencesManager.updateDocument();
             System.out.println(preferencesManager.getProperty("appconfig/rmi/server/registry/createregistry"));*/
-          /* preferencesManager.addBindedObject("asd","asd");
+         /*  preferencesManager.addBindedObject("asd","asd");
            preferencesManager.updateDocument();*/
            /* preferencesManager.removeBindedObject("asd");
             preferencesManager.updateDocument();*/

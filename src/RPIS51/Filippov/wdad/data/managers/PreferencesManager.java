@@ -41,6 +41,7 @@ public class PreferencesManager {
                 .append(name);
         return result.toString();
     }
+
     public static PreferencesManager getInstance() throws Exception {
         if (instance == null)
             instance = new PreferencesManager();
