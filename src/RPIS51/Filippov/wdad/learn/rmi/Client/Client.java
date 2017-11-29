@@ -23,10 +23,12 @@ public class Client {
             System.out.println(obj.getNoteText(owner,"Спасение мира"));
             User user = new User("Aragon","ReunitedKingdomKing@gmail.com");
             List<Note> notes = obj.getNotes(owner);
-            for (Map.Entry<User,Integer> map: notes.get(0).getPrivelegesMap().entrySet()) {
+            /*for (Map.Entry<User,Integer> map: notes.get(0).getPrivelegesMap().entrySet()) {
                 System.out.print(map.getKey().getName()+": ");
                 System.out.println(map.getValue());
-            }
+            }*/
+           // System.out.println(notes.get(0).getCdate());
+            System.out.println(notes.get(0).getCdate());
         }
         catch (Exception e){
             System.out.println(e.getMessage());

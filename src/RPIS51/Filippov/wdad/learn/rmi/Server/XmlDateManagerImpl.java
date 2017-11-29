@@ -74,11 +74,12 @@ public class XmlDateManagerImpl extends XmlTask implements XmlDateManager {
         return builder.append(xPathExpression.evaluate(note,XPathConstants.STRING));
     }
 
-    private Date getCDate(Node note) throws XPathExpressionException, ParseException {
+    public Date getCDate(Node note) throws XPathExpressionException, ParseException {
         XPathExpression xPathExpression = xPath.compile("cdate/text()");
         String date = (String) xPathExpression.evaluate(note,XPathConstants.STRING);
-        SimpleDateFormat formetter = new SimpleDateFormat("dd-mm-yyyy");
-        return formetter.parse(date);
+        SimpleDateFormat format = new SimpleDateFormat();
+        format.applyPattern("dd-MM-yyyy");
+        return format.parse(date);
     }
 
     private HashMap<User,Integer> getPrivileges(Node note) throws XPathExpressionException {
