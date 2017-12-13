@@ -1,6 +1,6 @@
 package RPIS51.Filippov.wdad.learn.rmi.Server;
 
-import RPIS51.Filippov.wdad.learn.rmi.XmlDateManager;
+import RPIS51.Filippov.wdad.data.managers.DateManager;
 import RPIS51.Filippov.wdad.learn.xml.Note;
 import RPIS51.Filippov.wdad.learn.xml.User;
 import RPIS51.Filippov.wdad.learn.xml.XmlTask;
@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-public class XmlDateManagerImpl extends XmlTask implements XmlDateManager {
+public class XmlDateManagerImpl extends XmlTask implements DateManager {
    private XPath xPath;
     public XmlDateManagerImpl(String filepath) {
         super(filepath);

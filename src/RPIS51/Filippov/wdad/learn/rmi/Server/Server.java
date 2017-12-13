@@ -21,7 +21,7 @@ public class Server {
 
             UnicastRemoteObject.exportObject(obj, 0);
             registry.rebind("Note", obj);
-            //manager.addBindedObject(manager.getName("Note"),XmlDateManager.class.getCanonicalName());
+            //manager.addBindedObject(manager.getName("Note"),DateManager.class.getCanonicalName());
             //manager.updateDocument();
             System.out.println("Server ready");
         } catch (Exception e) {
