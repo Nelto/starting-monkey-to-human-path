@@ -13,6 +13,7 @@ import javax.xml.xpath.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -31,6 +32,14 @@ public class PreferencesManager {
         DocumentBuilder builder = factory.newDocumentBuilder();
         document = builder.parse(appconfig);
         xPath = XPathFactory.newInstance().newXPath();
+    }
+
+    public String getName(String name){
+        StringBuilder result = new StringBuilder(getProperty(PreferencesConstantManager.REGISTRYADDRESS))
+                .append("/")
+                .append(getProperty(PreferencesConstantManager.REGISTRYPORT))
+                .append(name);
+        return result.toString();
     }
 
     public static PreferencesManager getInstance() throws Exception {
@@ -112,7 +121,7 @@ public class PreferencesManager {
 
     public String getProperty(String key) {
         try {
-            XPathExpression xPathExpression = xPath.compile(key + "/text()");
+            XPathExpression xPathExpression = xPath.compile(key.replace(".","/") + "/text()");
             String property = (String) xPathExpression.evaluate(document, XPathConstants.STRING);
             return property;
         } catch (XPathExpressionException e) {
@@ -123,7 +132,7 @@ public class PreferencesManager {
 
     public void setProperty(String key, String value) {
         try {
-            XPathExpression xPathExpression = xPath.compile(key + "/text()");
+            XPathExpression xPathExpression = xPath.compile(key.replace(".","/") + "/text()");
             Node property = (Node) xPathExpression.evaluate(document, XPathConstants.NODE);
             property.setTextContent(value);
         } catch (XPathExpressionException e) {
@@ -131,16 +140,6 @@ public class PreferencesManager {
         }
     }
 
-    public void test(String name)  {
-        try {
-            XPathExpression xPathExpression = xPath.compile("appconfig/rmi/server/bindedobject[@name='"+name+"']");
-            Node nodeList = (Node) xPathExpression.evaluate(document, XPathConstants.NODE);
-            /*Node node = (Node) xPathExpression.evaluate(document,XPathConstants.NODE);
-            node.removeChild(nodeList);*/
-        } catch (XPathExpressionException e) {
-            System.out.println(e.getMessage());
-        }
-    }
 
     public Properties getProperties()  {
         Properties properties = new Properties();
@@ -152,21 +151,14 @@ public class PreferencesManager {
                 PreferencesConstantManager.USECODEBASEONLY,
                 PreferencesConstantManager.CLASSPROVIDER};
         for (String key : keys) {
-            setProperty(key, getProperty(key));
+            properties.setProperty(key, getProperty(key));
         }
         return properties;
     }
 
     public void setProperties(Properties prop) {
-        String[] keys = {
-                PreferencesConstantManager.CREATEREGISTRY,
-                PreferencesConstantManager.REGISTRYADDRESS,
-                PreferencesConstantManager.REGISTRYPORT,
-                PreferencesConstantManager.POLICYPATH,
-                PreferencesConstantManager.USECODEBASEONLY,
-                PreferencesConstantManager.CLASSPROVIDER};
-        for (String key : keys) {
-            setProperty(key, prop.getProperty(key));
+        for (Map.Entry<Object,Object> proper:prop.entrySet()) {
+            setProperty((String) proper.getKey(),(String) proper.getValue());
         }
     }
 

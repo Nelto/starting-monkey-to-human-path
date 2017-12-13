@@ -14,7 +14,7 @@ import java.io.File;
  */
 public class XmlTask {
     private File xmlfile;
-    private Document document;
+    protected Document document;
 
     public XmlTask(String filepath) {
         try {
@@ -32,8 +32,7 @@ public class XmlTask {
             if (titleCheck(title, note)) {
                 NodeList owners = note.getElementsByTagName("owner");
                 NamedNodeMap attrib = owners.item(0).getAttributes();
-                if (attrib.item(0).getTextContent().equals(owner.getMail()) && attrib.item(1).getTextContent().equals(owner.getName()))
-                    return true;
+                return  (attrib.item(0).getTextContent().equals(owner.getMail()) && attrib.item(1).getTextContent().equals(owner.getName()));
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -54,7 +53,7 @@ public class XmlTask {
     }
 
 
-    public void UpdateNote(User owner, String title, String newText) {
+    public void updateNote(User owner, String title, String newText) {
         NodeList notes = document.getElementsByTagName("note");
         for (int i = 0; i < notes.getLength(); i++) {
             if (checkNote(owner, title, notes.item(i))) {

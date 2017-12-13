@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?><notes>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<notes>
    <note>
    <title>Спасение мира</title>
    <text>Отнести кольцо в Мордер</text>
@@ -6,6 +7,6 @@
    <privileges> 
        <user mail="ReunitedKingdomKing@gmail.com" name="Aragon" rights="RW"/>
    </privileges>
-   <cdate>13-04-3018</cdate> 
+   <cdate>29-11-2017</cdate>
 </note>
 </notes>
