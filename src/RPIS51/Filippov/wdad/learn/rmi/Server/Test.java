@@ -9,7 +9,7 @@ import java.util.List;
 public class Test {
     public static void main(String[] args) {
         try {
-            XmlDateManagerImpl impl = new XmlDateManagerImpl("src/RPIS51/Filippov/wdad/learn/xml/CorrectXml.xml");
+            XmlDataManagerImpl impl = new XmlDataManagerImpl("src/RPIS51/Filippov/wdad/learn/xml/CorrectXml.xml");
             User owner = new User("Frodo","steelHobbit@gmail.com");
             List<Note> nodes = impl.getNotes(owner);
            /* System.out.println(nodes.get(0).getTitle());

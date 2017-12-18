@@ -2,7 +2,7 @@ package RPIS51.Filippov.wdad.learn.rmi.Client;
 
 
 import RPIS51.Filippov.wdad.data.managers.PreferencesManager;
-import RPIS51.Filippov.wdad.data.managers.DateManager;
+import RPIS51.Filippov.wdad.data.managers.DataManager;
 import RPIS51.Filippov.wdad.learn.xml.Note;
 import RPIS51.Filippov.wdad.learn.xml.User;
 import RPIS51.Filippov.wdad.utils.PreferencesConstantManager;
@@ -16,7 +16,7 @@ public class Client {
         try {
             PreferencesManager manager = PreferencesManager.getInstance();
             Registry registry = LocateRegistry.getRegistry(Integer.parseInt(manager.getProperty(PreferencesConstantManager.REGISTRYPORT)));
-            DateManager obj = (DateManager) registry.lookup("Note");
+            DataManager obj = (DataManager) registry.lookup("Note");
             User owner = new User("Frodo","steelHobbit@gmail.com");
             System.out.println(obj.getNoteText(owner,"Спасение мира"));
             User user = new User("Aragon","ReunitedKingdomKing@gmail.com");

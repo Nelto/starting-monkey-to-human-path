@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
 
-public interface DateManager extends Remote {
+public interface DataManager extends Remote {
     String getNoteText(User owner, String title) throws RemoteException, SQLException;
     void updateNote(User owner, String title, String newText) throws RemoteException, SQLException;
     void setPrivileges(String noteTitle, User user, int nerRights) throws RemoteException, SQLException;
