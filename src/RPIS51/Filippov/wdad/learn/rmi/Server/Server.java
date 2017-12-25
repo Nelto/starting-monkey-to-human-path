@@ -10,7 +10,7 @@ import java.rmi.server.UnicastRemoteObject;
 public class Server {
     public static void main(String[] args) {
         try {
-            XmlDateManagerImpl obj = new XmlDateManagerImpl("src/RPIS51/Filippov/wdad/learn/xml/CorrectXml.xml");
+            XmlDataManagerImpl obj = new XmlDataManagerImpl("src/RPIS51/Filippov/wdad/learn/xml/CorrectXml.xml");
             Registry registry = null;
             PreferencesManager manager = PreferencesManager.getInstance();
             int registryport = Integer.parseInt(manager.getProperty(PreferencesConstantManager.REGISTRYPORT));
@@ -21,7 +21,7 @@ public class Server {
 
             UnicastRemoteObject.exportObject(obj, 0);
             registry.rebind("Note", obj);
-            //manager.addBindedObject(manager.getName("Note"),XmlDateManager.class.getCanonicalName());
+            //manager.addBindedObject(manager.getName("Note"),DataManager.class.getCanonicalName());
             //manager.updateDocument();
             System.out.println("Server ready");
         } catch (Exception e) {
