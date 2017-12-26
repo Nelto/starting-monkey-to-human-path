@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class Note implements Serializable {
+    private int id;
     private User owner;
     private String title;
     private StringBuilder text;
@@ -46,6 +47,15 @@ public class Note implements Serializable {
     public void setCdate(Date cdate) {
         this.cdate = cdate;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 
     public HashMap<User, Integer> getPrivelegesMap() {
         return privelegesMap;

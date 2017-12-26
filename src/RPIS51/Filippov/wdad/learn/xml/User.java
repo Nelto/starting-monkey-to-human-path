@@ -9,11 +9,21 @@ import java.io.Serializable;
  * Created by Nelto on 01.10.2017.
  */
 public class User implements Serializable {
+    private int id;
     private String name;
     private String mail;
     static final User ALL = new User("ALL", null);
 
+    public User() {
+    }
+
     public User(String name, String mail) {
+        this.name = name;
+        this.mail = mail;
+    }
+
+    public User(int id, String name, String mail) {
+        this.id = id;
         this.name = name;
         this.mail = mail;
     }
@@ -38,4 +48,11 @@ public class User implements Serializable {
         this.mail = mail;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
